@@ -63,7 +63,9 @@ public class StockSearchAutocompleteAdapter extends ArrayAdapter implements Filt
                 if(constraint!=null){
                     try {
                         String term = constraint.toString();
-                        searchStockArrayList = new DownloadStockSearches().execute(term).get();
+                        ArrayList<SearchStock> result = new DownloadStockSearches().execute(term).get();
+                        if(result!=null)
+                            searchStockArrayList=result;
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     } catch (ExecutionException e) {
